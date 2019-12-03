@@ -37,8 +37,10 @@ public enum DriverType implements DriverSetup {
 
         @Override
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+            System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver_v78\\chromedriver.exe");
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setHeadless(true);
+            chromeOptions.addArguments("start-maximized");
             return new ChromeDriver(chromeOptions.merge(capabilities));
         }
     },
