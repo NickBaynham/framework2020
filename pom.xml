@@ -15,6 +15,10 @@
         <selenium.version>3.141.59</selenium.version>
         <threads>1</threads>
         <browser>chrome</browser>
+        <overwrite.binaries>false</overwrite.binaries>
+        <webdriver.chrome.driver>chromedriver.exe</webdriver.chrome.driver>
+        <webdriver.firefox.driver>geckodriver.exe</webdriver.firefox.driver>
+        <webdriver.ie.driver>msedgedriver.exe</webdriver.ie.driver>
     </properties>
     <dependencies>
         <dependency>
@@ -38,6 +42,22 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>com.lazerycode.selenium</groupId>
+                <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                <version>1.0.17</version>
+                <configuration>
+                    <rootStandaloneServerDirectory>src/test/resources/drivers</rootStandaloneServerDirectory>
+                    <downloadedZipFileDirectory>src/test/resources/drivers</downloadedZipFileDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>selenium</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.0</version>
                 <configuration>
@@ -52,6 +72,12 @@
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>${threads}</threadCount>
+                    <systemProperties>
+                        <browser>${browser}</browser>
+                        <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+                        <webdriver.firefox.driver>${webdriver.firefox.driver}</webdriver.firefox.driver>
+                        <webdriver.edge.driver>${webdriver.ie.driver}</webdriver.edge.driver>
+                    </systemProperties>
                     <includes>
                         <include>**/*WD.java</include>
                     </includes>

@@ -7,5 +7,5 @@ Supports: Parallel Execution, Headless Browsers
 To Execute Tests:
 mvn clean install
 or for parallel:
-mvn clean install -Dthreads=2
+mvn clean install -Dthreads=2 -Dbrowser=chrome
 
