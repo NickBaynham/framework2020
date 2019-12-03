@@ -14,6 +14,7 @@
         <project.repoting.outputEncoding>UTF-8</project.repoting.outputEncoding>
         <selenium.version>3.141.59</selenium.version>
         <threads>1</threads>
+        <browser>chrome</browser>
     </properties>
     <dependencies>
         <dependency>
