@@ -8,21 +8,20 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class BasicTest {
+public class BasicTestWD extends DriverFactory {
 
     @Test
-    public void googleCheeseExample() {
+    public void googleCheeseExample() throws Exception {
         googleExampleThatSearchesFor("Cheese!");
     }
 
     @Test
-    public void googleMilkExample() {
+    public void googleMilkExample() throws Exception {
         googleExampleThatSearchesFor("Milk!");
     }
 
-    private void googleExampleThatSearchesFor(final String search) {
-        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver_v78\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+    private void googleExampleThatSearchesFor(final String search) throws Exception {
+        WebDriver driver = DriverFactory.getDriver();
         driver.get("http://www.google.com");
         WebElement fieldSearch = driver.findElement(By.name("q"));
         fieldSearch.clear();
@@ -37,6 +36,5 @@ public class BasicTest {
         });
 
         System.out.println("Page title is: " + driver.getTitle());
-        driver.quit();
     }
 }
