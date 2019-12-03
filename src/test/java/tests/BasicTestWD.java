@@ -20,6 +20,21 @@ public class BasicTestWD extends DriverFactory {
         googleExampleThatSearchesFor("Milk!");
     }
 
+    @Test
+    public void googleBreadExample() throws Exception {
+        googleExampleThatSearchesFor("Bread!");
+    }
+
+    @Test
+    public void googleEggsExample() throws Exception {
+        googleExampleThatSearchesFor("Eggs!");
+    }
+
+    @Test
+    public void googleSugarExample() throws Exception {
+        googleExampleThatSearchesFor("Sugar!");
+    }
+
     private void googleExampleThatSearchesFor(final String search) throws Exception {
         WebDriver driver = DriverFactory.getDriver();
         driver.get("http://www.google.com");
